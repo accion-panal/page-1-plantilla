@@ -19,12 +19,35 @@ export default async function apiCall() {
   const ufValue = response2?.UFs[0]?.Valor;
   const ufValueAsNumber = parseFloat(ufValue.replace(",", "."));
 
+  const filtroSelect = document.getElementById('FilterPrice');
+  filtroSelect.addEventListener('change', handleFilterChange);
+  showItems();
+
+  function handleFilterChange() {
+    const selectedValue = filtroSelect.value;
+    console.log(selectedValue);
+    console.log(data);
+  
+    let dataOrdenada;
+  
+    if (selectedValue === 'MayorMenor') {
+      /* console.log('La opción seleccionada es MayorMenor'); */
+      dataOrdenada = data.sort((a, b) => b.price - a.price);
+    } else {
+      /* console.log('La opción seleccionada es Menor mayor'); */
+      dataOrdenada = data.sort((a, b) => a.price - b.price);
+    }
+    console.log(dataOrdenada);
+    showItems();
+  }
+
   document.getElementById(
     "total-prop"
   ).innerHTML = `<div>${response.meta.totalItems} Propiedades encontradas
 	</div>`;
 
-  document.getElementById("container-propiedad").innerHTML = data.map(
+  function showItems() {
+    document.getElementById("container-propiedad").innerHTML = data.map(
     (data) =>
       `<div class="col-sm-4 property mb-3">
       <div class="property-item rounded overflow-hidden">
@@ -112,6 +135,8 @@ export default async function apiCall() {
     </div>`
     )
     .join("");
+  }
+  
 }
 
 
