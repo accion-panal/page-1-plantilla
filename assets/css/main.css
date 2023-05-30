@@ -1776,3 +1776,14 @@ footer .container .footer-nav {
   border-radius: 5px !important;
 
 }
+
+.textLimitClass{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.textLimitClass:hover{
+  display: block !important;
+}
