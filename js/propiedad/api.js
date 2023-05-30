@@ -51,7 +51,7 @@ export default async function apiCall() {
     (data) =>
       `<div class="col-sm-4 property mb-3">
       <div class="property-item rounded overflow-hidden">
-        <div class="position-relative overflow-hidden">
+        <div class="position-relative overflow-hidden" style="height:200px">
           <a href="detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}">
             <img
               class="img-fluid"
@@ -67,7 +67,7 @@ export default async function apiCall() {
         <div class="item-info">
           <div class="p-4 pb-0 card-props">
             <a
-              class="d-block h6 mb-2 text-uppercase text-center"
+              class="d-block h6 mb-2 text-uppercase text-center textLimitClass"
               href="detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}"
               >${data.title}</a>
             <span>Cod: ${data.id}</span>

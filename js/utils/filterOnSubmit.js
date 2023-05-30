@@ -180,7 +180,7 @@ document.getElementById("buscar")?.addEventListener("click", async () => {
                 <div class="item-info">
                 <div class="p-4 pb-0 card-props">
                     <a
-                    class="d-block h6 mb-2 text-uppercase text-center"
+                    class="d-block h6 mb-2 text-uppercase text-center textLimitClass"
                     href="detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}"
                     >${data.title}</a>
                     <span>Cod: ${data.id}</span>
