@@ -12,9 +12,9 @@ export default async function apiDestCall() {
     const ufValue = response2?.UFs[0]?.Valor;
     const ufValueAsNumber = parseFloat(ufValue.replace(",", "."));
   
-  
       document.getElementById('container-prop-destacada').innerHTML = filtrado.map(data => 
           `<li class="splide__slide">
+           <div style="display:flex;justify-content:center">
             <div class="col-sm-4 property mb-3" style="width:390px;height:620px !important;margin: 0 1px 0 0">
               <div class="property-item rounded overflow-hidden">
                 <div class="position-relative overflow-hidden" style="height:285px">
@@ -61,6 +61,7 @@ export default async function apiDestCall() {
                 </div>
               </div>
             </div>
+            </div>
           </li>`
           ).join('');
 
@@ -69,6 +70,14 @@ export default async function apiDestCall() {
             drag :"free",
             autoplay: "play",
             perPage: 3,
+            breakpoints: {
+              1399: {
+                perPage: 2,
+              },
+              991: {
+                perPage: 1,
+              }
+            }
         });
         splide.mount();
 }
