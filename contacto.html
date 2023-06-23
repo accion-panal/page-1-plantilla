@@ -114,7 +114,7 @@
                                   id="nombre"
                                   placeholder="Nombre"
                                   name="name"
-                                  value="Nombre"
+                               
                                 />
                               </div>
                             </div>
@@ -127,7 +127,7 @@
                                   id="email"
                                   placeholder="E-mail"
                                   name="email"
-                                  value="E-mail"
+                               
 
                                 />
                               </div>
@@ -141,7 +141,7 @@
                                   id="phone"
                                   placeholder="Teléfono"
                                   name="phone"
-                                  value="Teléfono"
+                                 
 
                                 />
                               </div>
@@ -155,7 +155,7 @@
                                   id="sujeto"
                                   placeholder="Asunto"
                                   name="subject"
-                                  value="Asunto"
+                                
 
                                 />
                               </div>
@@ -169,7 +169,7 @@
                                   id="mensaje"
                                   style="height: 150px"
                                   name="mensaje"
-                                  value="Mensaje"
+                                 
 
                                 ></textarea>
                               </div>
@@ -185,7 +185,8 @@
                           </div>
                         </form>
                         <br>
-                        <div id="respuesta"></div>
+                        <div class="alert visually-hidden" role="alert" id="respuesta"></div>
+                        <br>
                       </div>
                       <div
                         class="col-xl-5 d-flex align-items-center form-right"
@@ -198,22 +199,19 @@
                             class="mb-4 d-flex align-items-center contact-info"
                           >
                             <i class="bi bi-pin-map"></i>
-                            <span
-                              >RentalProp Spa Apoquindo 6410 Of. 605, Las
-                              Condes</span
-                            >
+                            <span id="address-ContactInfo">RentalProp Spa Apoquindo 6410 Of. 605, Las Condes</span>
                           </p>
                           <p
                             class="mb-4 d-flex align-items-center contact-info"
                           >
                             <i class="bi bi-telephone"></i>
-                            <span>+56 9 50469097</span>
+                            <span id="phone-ContactInfo">+56 9 50469097</span>
                           </p>
                           <p
                             class="mb-4 d-flex align-items-center contact-info"
                           >
                             <i class="bi bi-envelope-open mr-3"></i>
-                            <span>contacto@rentalprop.cl</span>
+                            <span id="email-ContactInfo">contacto@rentalprop.cl</span>
                           </p>
                         </div>
                       </div>
@@ -352,7 +350,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="js/utils/PostContact.js"></script>
     <script type="module" src="js/utils/SendEmail.js"></script>
-
+    <script type="module" src="js/Data/ContactInfo.js"></script>
 
   </body>
 </html>

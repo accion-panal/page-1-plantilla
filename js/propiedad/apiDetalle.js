@@ -4,45 +4,43 @@ import	ExchangeRateServices from  "../services/ExchangeRateServices.js";
 
 import {parseToCLPCurrency, clpToUf} from "../utils/getExchangeRate.js"
 
-export default async function apiDetalleCall(id, statusId, companyId){
-    let {data} = await getPropertiesForId(id, statusId, companyId );
+export default async function apiDetalleCall(id, realtorId, statusId, companyId){
+    let {data} = await getPropertiesForId(id, realtorId, statusId, companyId );
 
 const response = await ExchangeRateServices.getExchangeRateUF();
 const ufValue = response?.UFs[0]?.Valor
 const ufValueAsNumber = parseFloat(ufValue.replace(',', '.'));
 
 let indicator;
-let img;
 
+let realtorInfo = data.realtor;
 
 // console.log(id); // Imprimirá "134" si ese es el valor actual del parámetro "id"
 
-data.images.forEach((images, index) => {img +=
-    ` <li class="splide__slide ${ index == 0 ? "active" : ""}"> 
-        <img src="${images != null && images != "" && images != undefined  ? images : "img/Sin.png"}" style="height:600px;width:100%;"/>
-      </li>	
-    `
-    // indicator += `
-    // <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="${index}" ${index == 0 ? "class = active": ""} aria-current="true" aria-label="${index + 1}"></button>
-    // `
-    })
-
-
-
-
-document.getElementById('carrucel-img').innerHTML = 
-`
-<li class="splide__slide">${img}</li>
-`;
-
-let splide = new Splide(".splide", {
-    type: "fade",
-    padding: '5rem',
-    rewind:true,
-    autoplay: "play",
-    
+let updatedImages = data.images.map(function (image) {
+    return image.replace(/\\/g, "//");
 });
-splide.mount();
+
+
+ //! Imagenes en splide */
+ let img = '';
+ updatedImages.forEach((image, index) => {
+     img += `
+         <li class="splide__slide ${index === 0 ? 'active' : ''}">
+             <img src="${image || 'img/Sin.png'}" style="height: 600px; width: 100%;" />
+         </li>
+     `;
+ });
+ document.getElementById('carrucel-img').innerHTML = img;
+
+ let splide = new Splide('.splide', {
+     type: 'fade',
+     padding: '5rem',
+     rewind: true,
+     autoplay: 'play',
+ });
+
+ splide.mount();
 
 
 
@@ -78,7 +76,7 @@ document.getElementById('caracteristica-prop').innerHTML =
         <tr>
             <th scope="row">Habitaciones</th>
             <td>
-                <span><i class="bx bx-bed fs-4"></i> ${data.bedroom != null && data.bedrooms != undefined && data.bedrooms != "" ? data.bedrooms : "0"}</span>
+                <span><i class="bx bx-bed fs-4"></i> ${data.bedrooms != null && data.bedrooms != undefined && data.bedrooms != "" ? data.bedrooms : "0"}</span>
             </td>
         </tr>
         <tr>
@@ -102,6 +100,24 @@ document.getElementById('descrip-prop').innerHTML =
 ${data.description != null && data.description != undefined && data.description != "" ? data.description : "No registra descripción" }
 </p> `;
 
+document.getElementById('realtor-info').innerHTML = `
+<div class="position-relative text-center" style="margin-top:96px">
+    <img
+    src="${data?.realtor.img || "assets/img/Sin.png"}"
+    class="rounded-circle w-50"
+    alt="Cinque Terre"
+    />
+</div>
+<div class="py-2 d-flex flex-column justify-content-center" id="realtor">
+    <div style="color:#fff;" class="text-center" >
+        <p><b>Nombre:</b> ${data?.realtor.name} ${data.realtor.lastName} </p>
+        <p><b>E-mail:</b> ${data?.realtor.mail || "No registra email"} </p>
+        <p><b>Número:</b> ${data.realtor.contactPhone != null && data.realtor.contactPhone != undefined ? data.realtor.contactPhone : "No registra número celular" }</p>
+
+    </div>
+</div>
+`;
+
 }
 
 
@@ -112,4 +128,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	splide.mount();
 });
 
-apiDetalleCall()
+/* apiDetalleCall() */

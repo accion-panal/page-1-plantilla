@@ -4,14 +4,28 @@ import ExchangeRateServices from "../services/ExchangeRateServices.js";
 
 import { parseToCLPCurrency, clpToUf } from "../utils/getExchangeRate.js";
 
+import { PropertyData } from "../Data/userId.js";
+
+
 export default async function apiDestCall() {
-    let {data} = await getProperties(1, 10,0, 1, 1);
+    const { CodigoUsuarioMaestro, companyId, realtorId } = PropertyData;
+    let {data} = await getProperties(1, 10, CodigoUsuarioMaestro, 1, companyId, realtorId);
     let filtrado = data.filter(data => data.highlighted != null && data.highlighted  != false );
+    console.log(filtrado);
+  /*   let updatedImages = filtrado.image.map(function (image) {
+      return image.replace(/\\/g, "//");
+    }); */
+
+    filtrado = filtrado.map(item => {
+      // Reemplazar "\" por "//" en la propiedad "image"
+      item.image = item.image.replace(/\\/g, "//");
+      return item;
+    });
 
     const response2 = await ExchangeRateServices.getExchangeRateUF();
     const ufValue = response2?.UFs[0]?.Valor;
     const ufValueAsNumber = parseFloat(ufValue.replace(",", "."));
-  
+
       document.getElementById('container-prop-destacada').innerHTML = filtrado.map(data => 
           `<li class="splide__slide">
            <div style="display:flex;justify-content:center">
@@ -53,7 +67,7 @@ export default async function apiDestCall() {
                   <div class="p-4 pb-0">
                     <div class="d-flex justify-content-between">
                       <h6><b> ${data.surface_m2 != undefined && data.surface_m2 != "" && data.surface_m2 != "null" && data.surface_m2 != null ? data.surface_m2 : "0"} M²</b></h6>
-                      <span><i class='bx bx-bed fs-4'></i>${data.bedroom != undefined && data.bedroom != "" && data.bedroom != "null" && data.bedroom != null ? data.bedroom : "0"}</span>
+                      <span><i class='bx bx-bed fs-4'></i>${data.bedrooms != undefined && data.bedrooms != "" && data.bedrooms != "null" && data.bedrooms != null ? data.bedrooms : "0"}</span>
                       <span><i class='bx bx-bath fs-4'></i>${data.bathrooms != undefined && data.bathrooms != "" && data.bathrooms != "null" && data.bathrooms != null ? data.bathrooms : "0"}</span>
                       <span><i class='bx bxs-car-garage fs-4'></i>${data.covered_parking_lots != undefined && data.covered_parking_lots != "" && data.covered_parking_lots != "null" && data.covered_parking_lots != null ? data.covered_parking_lots : "0" }</span>
                     </div>

@@ -106,14 +106,14 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6" id="About-head">
               <img
                 src="/assets/img/constructions-4.jpg"
                 style="width: 100%; max-width: max-content"
               />
             </div>
             <div class="col-lg-6">
-              <p>
+              <p id="Text1">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam quae, voluptatum, quod, voluptas quibusdam voluptates
                 quidem voluptatibus quos quia quas dolorum. Quisquam, quae.
@@ -121,14 +121,14 @@
                 quibusdam voluptates quidem voluptatibus quos quia quas dolorum.
                 Quisquam, quae. Quisquam quibusdam, quae quod voluptatum quas.
               </p>
-              <p>
+              <p id="Text2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam quae, voluptatum, quod, voluptas quibusdam voluptates
                 quidem voluptatibus quos quia quas dolorum. Quisquam, quae.
                 Quisquam quibusdam, quae quod voluptatum quas.
               </p>
 
-              <p>
+              <p id="Text3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam quae, voluptatum, quod, voluptas quibusdam voluptates
                 quidem voluptatibus quos quia quas dolorum. Quisquam, quae.
@@ -152,7 +152,7 @@
           <div class="row">
             <div class="col-lg-8">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="mision-info">
                   <h2 style="font-size: 1.5em;"><b>MISIÓN</b></h2>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -164,7 +164,7 @@
                     quod voluptatum quas.
                   </p>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="vision-info">
                   <h2 style="font-size: 1.5em;"><b>VISIÓN</b></h2>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -178,8 +178,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <img
+            <div class="col-lg-4" id="ImageVisionMision">
+              <img 
                 src="/assets/img/constructions-4.jpg"
                 style="width: 100%; max-width: max-content"
               />
@@ -195,82 +195,8 @@
           <div class="section-header">
             <h2><b>Nuestros servicios</b></h2>
           </div>
-          <div class="row gy-4">
-            <div
-              class="col-lg-3 col-md-6 collapsed service-card"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content"
-              aria-expanded="false"
-              aria-controls="collapse"
-            >
-              <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="fa-sharp fa-solid fa-house-circle-check"></i>
-                </div>
-                <h3>Asesoria bancaria</h3>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-3 col-md-6 collapsed service-card"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content"
-              aria-expanded="false"
-              aria-controls="collapse"
-            >
-              <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="fa-sharp fa-solid fa-handshake-simple"></i>
-                </div>
-                <h3 class="text-center">Pública con nosotros</h3>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-3 col-md-6 collapsed service-card"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content"
-              aria-expanded="false"
-              aria-controls="collapse"
-            >
-              <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="fa-sharp fa-solid fa-file-contract"></i>
-                </div>
-                <h3 class="text-center">Administración de arriendo</h3>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-3 col-md-6 collapsed service-card"
-              data-aos="fade-up"
-              data-aos-delay="100"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content"
-              aria-expanded="false"
-              aria-controls="collapse"
-            >
-              <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="fa-sharp fa-solid fa-file-signature"></i>
-                </div>
-                <h3 class="text-center">Servicios legales</h3>
-              </div>
-            </div>
-            <!-- End Service Item -->
+          <div class="row gy-4" id="card-info">
+            <!-- cards in js/data/servicesInfo.js -->
           </div>
         </div>
       </section>
@@ -449,19 +375,18 @@
       </ul>
     </div>
       <div class="contact-info">      
-        <p class="d-flex align-items-center">
+        <p class="d-flex align-items-center" >
           <i class="bi bi-pin-map"></i>
-          <span class="text-black-50"
-            >RentalProp Spa Apoquindo 6410 Of. 605, Las Condes</span
-          >
+          <span class="text-black-50" id="address-ContactInfo">RentalProp Spa Apoquindo 6410 Of. 605, Las Condes</span>
         </p>
-        <p class="d-flex align-items-center">
+
+        <p class="d-flex align-items-center" >
           <i class="bi bi-telephone"></i>
-          <span class="text-black-50">+56 9 50469097</span>
+          <span class="text-black-50" id="phone-ContactInfo">+56 9 50469097</span>
         </p>
-        <p class="d-flex align-items-center">
+        <p class="d-flex align-items-center" >
           <i class="bi bi-envelope-open"></i>
-          <span class="text-black-50">contacto@rentalprop.cl</span>
+          <span class="text-black-50" id="email-ContactInfo">contacto@rentalprop.cl</span>
         </p>
 
       </div>
@@ -499,5 +424,8 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script type="module" src="js/Data/AboutInfo.js"></script>
+    <script type="module" src="js/Data/ContactInfo.js"></script>
+    <script type="module" src="js/Data/ServicesInfo.js"></script>
   </body>
 </html>
