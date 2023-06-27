@@ -4,14 +4,28 @@ import ExchangeRateServices from "../services/ExchangeRateServices.js";
 
 import { parseToCLPCurrency, clpToUf } from "../utils/getExchangeRate.js";
 
+import { PropertyData } from "../Data/userId.js";
+
+
 export default async function apiDestCall() {
-    let {data} = await getProperties(1, 10,0, 1, 1);
+    const { CodigoUsuarioMaestro, companyId, realtorId } = PropertyData;
+    let {data} = await getProperties(1, 10, CodigoUsuarioMaestro, 1, companyId, realtorId);
     let filtrado = data.filter(data => data.highlighted != null && data.highlighted  != false );
+    console.log(filtrado);
+  /*   let updatedImages = filtrado.image.map(function (image) {
+      return image.replace(/\\/g, "//");
+    }); */
+
+    filtrado = filtrado.map(item => {
+      // Reemplazar "\" por "//" en la propiedad "image"
+      item.image = item.image.replace(/\\/g, "//");
+      return item;
+    });
 
     const response2 = await ExchangeRateServices.getExchangeRateUF();
     const ufValue = response2?.UFs[0]?.Valor;
     const ufValueAsNumber = parseFloat(ufValue.replace(",", "."));
-  
+
       document.getElementById('container-prop-destacada').innerHTML = filtrado.map(data => 
           `<li class="splide__slide">
            <div style="display:flex;justify-content:center">

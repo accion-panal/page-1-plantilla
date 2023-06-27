@@ -1,5 +1,5 @@
 import { getProperties} from "../services/PropertiesServices.js";
-
+import { PropertyData } from "../Data/userId.js";
 
 
 export default async function apiCallMap() {
@@ -17,7 +17,8 @@ export default async function apiCallMap() {
 
     });
 
-    let {data} = await getProperties(1, 10, 0, 1, 1);
+    const {realtorId, CodigoUsuarioMaestro, companyId} = PropertyData;
+    let {data} = await getProperties(1, 10, CodigoUsuarioMaestro, 1, companyId, realtorId );
     const promiseMap = new Promise(
         (resolve)=>{
         data.map(data => {
@@ -34,7 +35,7 @@ export default async function apiCallMap() {
                 <span>${data.title}</span>
                 <br>
                 <br>
-                <a href="/detalle_propiedad.html?${data.id}&realtorId=${0}&statusId=${1}&companyId=${1}" name="VerDetalle"  class="more d-flex align-items-center float-start">
+                <a href="/detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" name="VerDetalle"  class="more d-flex align-items-center float-start">
                 <span class="label" >Ver Detalle</span>
                 <span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
                 </a>`)

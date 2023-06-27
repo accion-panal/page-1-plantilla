@@ -1,8 +1,8 @@
+import { RealtorSendEmailData } from "../Data/userId.js";
 const formEmail = document.getElementById('form-contact');
 
-
 formEmail.addEventListener('submit', function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
 
 let firstName = document.getElementById('nombre');
@@ -11,8 +11,13 @@ let subject = document.getElementById('sujeto');
 let phone = document.getElementById('phone');
 let message = document.getElementById('mensaje');
 
+let realtorMail = RealtorSendEmailData.sendEmail;
 
-fetch("https://formsubmit.co/ajax/fabian.salas.astete@gmail.com", {
+if(firstName.value==='' || email.value==='' || phone.value==='' || subject.value==='' || message.value===''){
+  return;
+}
+
+fetch(`https://formsubmit.co/ajax/${realtorMail}`,{
   method: "POST",
   headers: { 
       'Content-Type': 'application/json',
@@ -27,7 +32,10 @@ fetch("https://formsubmit.co/ajax/fabian.salas.astete@gmail.com", {
   })
 })
   .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log('Error al enviar correo',error));
+  .then((data) => {
+    console.log('SendEmail: ',data)
+    console.log(data.success)
+  })
+  .catch(error => console.log('SendEmailError: ',error));
 
 })

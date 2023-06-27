@@ -1,9 +1,9 @@
 import { getPropertiesForId } from "../services/PropertiesServices.js";
 
 
-export default async function apiCallMapDetail(id, statusId, companyId){
+export default async function apiCallMapDetail(id, realtorId, statusId, companyId){
 
-let {data} = await getPropertiesForId(id, statusId, companyId );
+let {data} = await getPropertiesForId(id, realtorId, statusId, companyId);
 
 
 const LngLat = data.LngLat.replace("{", "")
