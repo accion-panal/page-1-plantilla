@@ -82,6 +82,11 @@ export default async function renderCall() {
 
     //todo: creacion de la funcion ShowItems
     function showItems() {
+        data = data.map(item => {
+            // Reemplazar "\\" por "//" en la propiedad "image"
+            item.image = item.image.replace(/\\/g, "//");
+            return item;
+        });
         //* si container-propiedad es distinto de Null, hara un innerHTML
         //! esto es para evitar errores
         let containerGrid = document.getElementById('container-propiedad');
@@ -91,11 +96,8 @@ export default async function renderCall() {
             <div class="property-item rounded overflow-hidden">
               <div class="position-relative overflow-hidden" style="height:200px">
                 <a href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}">
-                  <img
-                    class="img-fluid"
-                    src="https://aulen.partnersadvisers.info/properties/secure-imgs/Imagenes//${data.id}//1.jpg"
-                    alt=""
-                /></a>
+                        ${data.image.endsWith('.jpg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: data.image.endsWith('.png') ? `<img src=${data.image} alt="Image" class="img-fluid">` : data.image.endsWith('.jpeg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`}
+                </a>
                 <div
                   class="bg-dark rounded text-white position-absolute end-0 top-0 m-4 py-1 px-3"
                 >
@@ -145,7 +147,9 @@ export default async function renderCall() {
             <div class="col-sm-4 property col-lg-12 mb-3">
             <div class="property-item rounded overflow-hidden flex-row align-items-center">
               <div class="position-relative overflow-hidden"  style="max-width: 50%;>
-                <a href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}"><img class="img-fluid" src="https://aulen.partnersadvisers.info/properties/secure-imgs/Imagenes//${data.id}//1.jpg"></a>
+                <a href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}">
+                ${data.image.endsWith('.jpg') ? `<img src=${data.image} alt="Image" class="img-fluid ">`: data.image.endsWith('.png') ? `<img src=${data.image} alt="Image" class="img-fluid ">` : data.image.endsWith('.jpeg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`}
+                </a>
                 <div class="bg-dark rounded text-white position-absolute end-0 top-0 m-4 py-1 px-3">
                   ${data.operation}
                 </div>

@@ -41,11 +41,6 @@ export const ContactInformation = {
 
 
 export const servicesInformation = {
-   /*  titleInfo:'ASESORÍA BANCARIA',
-    descInfo: 'Data-Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam facilis fugiat, tenetur eius rem, architecto esse perspiciatis aperiam Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe numquam amet doloremque repellendus, culpa accusantium nobis ducimus ipsam impedit praesentium accusamus enim minus sequi pariatur in soluta nam, est ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam facilis fugiat, tenetur eius rem, architecto esse perspiciatis aperiam Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe numquam amet doloremque repellendus, culpa accusantium nobis ducimus ipsam impedit praesentium accusamus enim minus sequi pariatur in soluta nam, est ab.',
-    formTitle: 'PÚBLICA CON NOSOTROS',
-    formDesc: 'Data-Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam facilis fugiat, tenetur eius rem, architecto esse perspiciatis aperiam',
-    bgImage:'images/nosotros_2.jpg', */
     cards:[{
         id:1,
         icon:'<i class="fa-sharp fa-solid fa-house-circle-check"></i>',
