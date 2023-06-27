@@ -53,7 +53,7 @@ export default async function apiDestCall() {
                   <div class="p-4 pb-0">
                     <div class="d-flex justify-content-between">
                       <h6><b> ${data.surface_m2 != undefined && data.surface_m2 != "" && data.surface_m2 != "null" && data.surface_m2 != null ? data.surface_m2 : "0"} M²</b></h6>
-                      <span><i class='bx bx-bed fs-4'></i>${data.bedroom != undefined && data.bedroom != "" && data.bedroom != "null" && data.bedroom != null ? data.bedroom : "0"}</span>
+                      <span><i class='bx bx-bed fs-4'></i>${data.bedrooms != undefined && data.bedrooms != "" && data.bedrooms != "null" && data.bedrooms != null ? data.bedrooms : "0"}</span>
                       <span><i class='bx bx-bath fs-4'></i>${data.bathrooms != undefined && data.bathrooms != "" && data.bathrooms != "null" && data.bathrooms != null ? data.bathrooms : "0"}</span>
                       <span><i class='bx bxs-car-garage fs-4'></i>${data.covered_parking_lots != undefined && data.covered_parking_lots != "" && data.covered_parking_lots != "null" && data.covered_parking_lots != null ? data.covered_parking_lots : "0" }</span>
                     </div>
