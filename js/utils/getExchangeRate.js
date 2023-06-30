@@ -10,3 +10,14 @@ export const parseToCLPCurrency = (number) => {
 export const clpToUf = (clpValue, ufValue) => {
 	return (Math.round((clpValue / ufValue) * 100) / 100000).toFixed(2);
   };
+
+
+/** Parse CLP to UF */
+export const ufToClp = (clpValue, ufValue) => {
+	return (clpValue * ufValue);
+};
+
+/* UF validation */
+export const validationUF = (value) => value === 'UF';
+/* CLP validation */
+export const validationCLP = (value) => value === 'CLP';
