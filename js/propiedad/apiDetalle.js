@@ -2,7 +2,7 @@ import { getPropertiesForId } from "../services/PropertiesServices.js";
 
 import	ExchangeRateServices from  "../services/ExchangeRateServices.js";
 
-import {parseToCLPCurrency, clpToUf} from "../utils/getExchangeRate.js"
+import {parseToCLPCurrency, clpToUf, validationUF, validationCLP, ufToClp} from "../utils/getExchangeRate.js"
 
 export default async function apiDetalleCall(id, realtorId, statusId, companyId){
     let {data} = await getPropertiesForId(id, realtorId, statusId, companyId );
@@ -15,6 +15,10 @@ let indicator;
 
 let realtorInfo = data.realtor;
 
+//! transformar valor del uf a int
+const cleanedValue = ufValue.replace(/\./g, '').replace(',', '.');
+const ufValueAsInt = parseFloat(cleanedValue).toFixed(0);
+//!--
 // console.log(id); // Imprimirá "134" si ese es el valor actual del parámetro "id"
 
 let updatedImages = data.images.map(function (image) {
@@ -53,7 +57,7 @@ document.getElementById('datos-prop').innerHTML =
 `<h4><b>${data?.title || "No registra titulo"}</b></h4> `;
 
 document.getElementById('extra-prop').innerHTML = 
-`<h4>UF ${clpToUf(data.price, ufValueAsNumber)} / CLP ${parseToCLPCurrency(data?.price)}</h4>
+`<h4>UF ${validationUF(data.currency.isoCode) ? data.price : clpToUf(data.price, ufValueAsNumber)} / CLP ${validationCLP(data.currency.isoCode) ? parseToCLPCurrency(data?.price): parseToCLPCurrency(ufToClp(data.price, ufValueAsInt))}</h4>
 <p>${data.commune != null && data.commune != undefined && data.commune != "" ? data.commune : "No registra comuna"}, ${data.region != null && data.region != undefined && data.region != "" ? data.region : "No registra región"}, Chile</p> `;
 
 document.getElementById('caracteristica-prop').innerHTML = 

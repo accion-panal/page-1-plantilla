@@ -33,20 +33,22 @@ const loadInformation = () => {
             `;
     }
 
-    let horario = document.getElementById('horario-ContactInfo');
-    if (horario !== null) {
-        horario.innerHTML = dataHorario.map(dataHorario => `
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa fa-clock-o fa-lg text-black-50"p-1"></i>
-                </div>
-                <div class="col-11">
-                    <p class="text-black-50"">
-                        ${dataHorario.title}
-                    </p>
-                </div>
-            </div>
-        `).join('');
+    let horarioSemana = document.getElementById('horarioSemana-ContactInfo');
+    if (horarioSemana !== null) {
+        horarioSemana.innerHTML = `
+            <p class="text-black-50">
+                ${ContactInformation.horarioSemana}
+            </p>
+            `;
+    }
+
+    let horarioFinSemana = document.getElementById('horarioFinSemana-ContactInfo');
+    if (horarioFinSemana !== null) {
+        horarioFinSemana.innerHTML = `
+        <p class="text-black-50">
+            ${ContactInformation.horarioFinSemana}
+        </p>
+        `;
     }
 }
 
