@@ -2,6 +2,7 @@ import { AboutInformation } from "./userId.js";
 import { AboutHead } from "./userId.js";
 
 const loadInformation = () => {
+    localStorage.removeItem('globalQuery');
     /* LLENAR INFORMACION DE MISION */
     /* REGION: rescatar value por su id */
     let mision = document.getElementById('mision-info');

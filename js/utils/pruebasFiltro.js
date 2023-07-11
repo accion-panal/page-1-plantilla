@@ -102,7 +102,8 @@ document.getElementById("max_price").addEventListener("change", (element) => {
 })
 
 
-document.getElementById("buscar")?.addEventListener("click", async () => {
+document.getElementById("buscar")?.addEventListener("click", async (event) => {
+    event.preventDefault();
     console.log(query);
     /* window.open(
       window.location.origin +
