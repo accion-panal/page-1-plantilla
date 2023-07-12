@@ -1,6 +1,7 @@
 import { servicesInformation } from "./userId.js";
 
 const loadInformation =()=>{
+    localStorage.removeItem('globalQuery');
     const { cards } = servicesInformation;
 
     /* LLENAR INFORMACION DE Cards*/

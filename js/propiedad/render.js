@@ -6,7 +6,7 @@ import { parseToCLPCurrency, clpToUf, validationUF} from "../utils/getExchangeRa
 
 import { PropertyData, limitDataApi } from "../Data/userId.js";
 import paginationCall from "../utils/pagination.js";
-/* import apiCallMap from "../propiedad/apiMapProp.js"; */
+import apiCallMap from "../propiedad/apiMapProp.js"; 
 
 export default async function renderCall() {
     //* INICIALIZACION DE VARIABLES
