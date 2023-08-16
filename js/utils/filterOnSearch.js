@@ -179,12 +179,17 @@ document.getElementById('buscar2')?.addEventListener('click', async() => {
     console.log('minPrice ',minPrice); //precio minimo
     console.log('maxPrice ',maxPrice); //precio maximo
 
-
+    let limitProp = limitDataApi.limit;
+    
+    let storedLimitProperties = localStorage.getItem('LimitProperties');
+    if (storedLimitProperties) {
+        limitProp = storedLimitProperties;
+    }
     //* Generar url
     let urlFilters = operation+typeOfProperty+nameRegion+commune+bedrooms+bathrooms+parkingLots+minPrice+maxPrice;
     console.log(urlFilters);
     //* Hacer peticion a la api     | el segundo digito es el limit
-    let response = await getPropertiesForCustomUrl(1,limitDataApi.limit,CodigoUsuarioMaestro,1,companyId,realtorId,urlFilters);
+    let response = await getPropertiesForCustomUrl(1,limitProp,CodigoUsuarioMaestro,1,companyId,realtorId,urlFilters);
     console.log(response);
     //* Guardar el response en el globalResponse
     localStorage.setItem('globalResponse', JSON.stringify(response));
