@@ -74,6 +74,60 @@ export default async function renderCall() {
         showItems();
     }
 
+
+    //Todo: Set loading
+    function setContainerLoading(isLoading){
+      let spinner = `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`;
+
+      if(isLoading == true){
+          let containerGrid = document.getElementById('container-propiedad');
+          if (containerGrid !== null) {
+              document.getElementById("container-propiedad").innerHTML = spinner
+          }
+          let containerList = document.getElementById('container-propiedad-list');
+          if (containerList !== null) {
+              document.getElementById("container-propiedad-list").innerHTML = spinner
+          }
+          let containerMap = document.getElementById('div-map-section');
+          if (containerMap !== null) {
+              document.getElementById("div-map-section").innerHTML = spinner
+          }
+      }
+  }
+    //todo: Cantidad de limite en las propiedades
+    const filtroLimit = document.getElementById('FilterLimit');
+    filtroLimit.addEventListener('change', handleLimitChange);
+    async function handleLimitChange() {
+      setContainerLoading(true)
+      try {
+          //* el segundo digito es el limit
+          response = await getProperties(1, filtroLimit.value, CodigoUsuarioMaestro, 1, companyId, realtorId);
+
+          //* setear variables
+          let maxPage =  Math.ceil(response.meta.totalItems / response.meta.limit);
+          //* Guardar vaariables en el localStorage
+          localStorage.setItem('globalResponse', JSON.stringify(response));
+          localStorage.setItem('LimitPages', JSON.stringify(maxPage));
+          localStorage.setItem('countPage', JSON.stringify(1));
+          localStorage.setItem('LimitProperties', filtroLimit.value);
+          
+          //* Actualizar variable data
+          data = response.data;
+          //* llamar funciones para actualizar visualmente.
+          data = data.map(item => {
+              // Reemplazar "\\" por "//" en la propiedad "image"
+              item.image = item.image.replace(/\\/g, "//");
+              return item;
+          });
+          
+          paginationCall();
+          showItems();
+      } catch (error) {
+          console.error('Error in handleLimitChange:', error);
+      }
+        
+    }
+
     //todo: LLamamos a la funcion que muestra las cards
     showItems();
 

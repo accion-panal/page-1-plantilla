@@ -34,12 +34,26 @@ export default async function paginationCall() {
     }
     function removeUrlRepeat(url,countPages) {
         /* return url.replace(/&page=1&limit=2/, ''); */
-        let regex = new RegExp(`&page=${countPages}&limit=${limitDataApi.limit}`);
+        let limitProp = limitDataApi.limit;
+    
+        let storedLimitProperties = localStorage.getItem('LimitProperties');
+        if (storedLimitProperties) {
+            limitProp = storedLimitProperties;
+        }
+        console.log('limitProp pagination', limitProp)
+        let regex = new RegExp(`&page=${countPages}&limit=${limitProp}`);
         return url.replace(regex, '');
     }
     function removeUrlRepeat2(url,countPages) {
         /* return url.replace(/&page=1&limit=2/, ''); */
-        let regex = new RegExp(`&limit=${limitDataApi.limit}&page=${countPages}`);
+        let limitProp = limitDataApi.limit;
+    
+        let storedLimitProperties = localStorage.getItem('LimitProperties');
+        if (storedLimitProperties) {
+            limitProp = storedLimitProperties;
+        }
+        console.log('limitProp pagination', limitProp)
+        let regex = new RegExp(`&limit=${limitProp}&page=${countPages}`);
         return url.replace(regex, '');
     }
     function disabledButton(){
