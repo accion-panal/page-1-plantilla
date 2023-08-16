@@ -1779,11 +1779,14 @@ footer .container .footer-nav {
 
 .textLimitClass{
   display: -webkit-box !important;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;  
   overflow: hidden;
+  height: 2.5rem;
+  transition: height 1s ease  !important;
 }
 
 .textLimitClass:hover{
   display: block !important;
+  height: 6.25rem;
 }
