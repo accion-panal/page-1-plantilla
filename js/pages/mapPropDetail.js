@@ -1,5 +1,5 @@
-import { PropertyData } from "./Data/userId.js";
-import apiCallMapDetail from "./propiedad/apiMapDetalle.js";
+import { PropertyData } from "../Data/userId.js";
+import apiCallMapDetail from "../Propiedades/apiMapDetalle.js";
 
 const url = window.location.search; 
 const value = url.match(/\d+/)[0];

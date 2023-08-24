@@ -97,11 +97,11 @@
                 <div
                   class="container d-flex justify-content-center flex-column"
                  style="margin-top: 150px;">
-                  <form>
+                  <div>
                     <div class="row g-2">
                       <div class="col-md-4">
-                        <select class="form-select py-2" id="operationType">
-                          <option value="" selected >Tipo de Operación</option>
+                        <select class="form-select py-2" name="operationType" id="operationType">
+                          <option value="" selected >Tipo de operación</option>
                           <option value="venta" >Venta</option>
                           <option value="arriendo" >Arriendo</option>
                           <option value="arriendo_temporal" >Arriendo Temporal</option>
@@ -109,25 +109,15 @@
                       </div>
 
                       <div class="col-md-4">
-                        <select class="form-select py-2" id="typeOfProperty">
-                          <option value="" selected>Tipo de Propiedad</option>
+                        <select class="form-select py-2" name="typeOfProperty" id="typeOfProperty">
+                          <option value="" selected>Tipo de propiedad</option>
                           <option value="departamento">Departamento</option>
                           <option value="casa">Casa</option>
-                          <option value="parcela">Parcela</option>
-                          <option value="bodega">Bodega</option>
-                          <option value="terreno">Terreno</option>
-                          <option value="estacionamiento">Estacionamiento</option>
-                          <option value="industrial">Industrial</option>
-                          <option value="agricola">Agricola</option>
-                          <option value="local">Local Comercial</option>
-                          <option value="oficina">Oficina</option>
-                          <option value="sitio">Sitio</option>
-                          <option value="Terreno En Construccion">Terreno En Construccion</option>
                         </select>
                       </div>
 
                       <div class="col-md-4">
-                        <select class="form-select py-2" id="region">
+                        <select class="form-select py-2" name="regionTextId" id="regionTextId">
                           <option value="0" selected>Región</option>
                          
                         </select>
@@ -135,7 +125,7 @@
 
                       <div class="row d-flex g-2">
                         <div class="col-md-4">
-                          <select class="form-select" id="commune">
+                          <select class="form-select" name="communeTextId" id="communeTextId">
                             <option  value="" selected>Comuna</option>
                           </select>
                         </div>
@@ -152,7 +142,7 @@
                                 type="radio"
                                 name="inlineRadioOptions"
                                 id="inlineRadio1"
-                                value="option1" style="width: 15px;height: 15px;"
+                                value="uf" style="width: 15px;height: 15px;"
                               />
                               <label class="form-check-label" for="inlineRadio1"
                                 >UF</label
@@ -164,7 +154,7 @@
                                 type="radio"
                                 name="inlineRadioOptions"
                                 id="inlineRadio2"
-                                value="option2" style="width: 15px;height: 15px;"
+                                value="clp" style="width: 15px;height: 15px;"
                               />
                               <label class="form-check-label" for="inlineRadio2"
                                 >CLP</label
@@ -175,30 +165,20 @@
                         <div class="col-md-4 d-flex">
                           <div class="col-md-6">
                             <div>
-                              <input
-                                type="number"
-                                id="min_price"
-                                class="form-control py-2"
-                                placeholder="Desde"
-                              />
+                              <input type="number" name="desde" id="min_price" class="form-control py-2" placeholder="Desde" />
                             </div>
                           </div>
 
                           <div class="col-md-6">
                             <div>
-                              <input
-                                type="number"
-                                id="max_price"
-                                class="form-control py-2"
-                                placeholder="Hasta"
-                              />
+                              <input type="number" name="hasta" id="max_price" class="form-control py-2" placeholder="Hasta" />
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="row g-2">
                         <div class="col-md-4">
-                          <select class="form-select" id="covered_parking_lots">
+                          <select class="form-select" name="covered_parking_lots" id="covered_parking_lots">
                             <option value="" selected>Estacionamientos</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -207,7 +187,7 @@
                           </select>
                         </div>
                         <div class="col-md-4">
-                          <select class="form-select" id="bathrooms">
+                          <select class="form-select" name="bathrooms" id="bathrooms">
                             <option value="" selected>Baños</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -216,7 +196,7 @@
                           </select>
                         </div>
                         <div class="col-md-4">
-                          <select class="form-select" id="bedrooms">
+                          <select class="form-select" name="bedrooms" id="bedrooms">
                             <option value="" selected>Habitaciones</option>       
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -232,7 +212,7 @@
                         >
                           <div class="position-relative">
                             <button
-                              type="button"
+                              type="submit"
                               class="btn btn-dark btn-rounded w-100 py-2 btn-circle"
                               id="buscar"
                             >
@@ -242,7 +222,7 @@
                         </div>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
               <!-- Filter search End -->
@@ -748,16 +728,18 @@
     <script src="assets/js/main.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="js/propiedad/apiPropDestacada.js"></script>
 
-   <!--  <script type="module" src="js/utils/filterOnSubmit.js"></script>
-    <script type="module" src="js/utils/filterOnSubmitIndex.js"></script> -->
+    <!-- Api - Propiedades Destacada-->
+    <script type="module" src="js/pages/destacada_prop.js"></script>
+
+    <!-- Filtros hacia propiedades -->
     <script type="module" src="js/utils/getSelects.js"></script>
+    <script type="module" src="js/utils/filterIndex.js"></script>
+
+    <!-- Load Information -->
     <script type="module" src="js/Data/ContactInfo.js"></script>
-    <script type="module" src="js/utils/pruebasFiltro.js"></script>
     <script type="module" src="js/Data/Footer.js"></script>
-    <!-- <script type="module" src="/js/utils/getInputsApi.js"></script>
-    <script type="module" src="/js/utils/getValuesOfInputs.js"></script> -->
+
   </body>
 </html>
 

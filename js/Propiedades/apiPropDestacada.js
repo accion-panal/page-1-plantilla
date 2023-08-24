@@ -12,9 +12,6 @@ export default async function apiDestCall() {
     let {data} = await getProperties(1, 10, CodigoUsuarioMaestro, 1, companyId, realtorId);
     let filtrado = data.filter(data => data.highlighted != null && data.highlighted  != false );
     console.log(filtrado);
-  /*   let updatedImages = filtrado.image.map(function (image) {
-      return image.replace(/\\/g, "//");
-    }); */
 
     filtrado = filtrado.map(item => {
       // Reemplazar "\" por "//" en la propiedad "image"
@@ -102,5 +99,3 @@ document.addEventListener("DOMContentLoaded", function () {
 	// splideList.mount();
 	splide.mount();
 });
-
-apiDestCall()

@@ -1790,3 +1790,9 @@ footer .container .footer-nav {
   display: block !important;
   height: 6.25rem;
 }
+
+
+.initialMap {
+  height: 0 !important;
+  overflow: hidden;
+}

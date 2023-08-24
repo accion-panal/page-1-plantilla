@@ -2,8 +2,6 @@ import { ContactInformation } from "./userId.js";
 
 const loadInformation = () => {
     localStorage.removeItem('globalQuery');
-    const dataHorario = ContactInformation.horario;
-    console.log(dataHorario)
 
     /* LLENAR INFORMACION DE MISION */
     /* REGION: rescatar value por su id */
