@@ -1,8 +1,6 @@
 import { ContactFooter } from "./userId.js";
 
 const loadFooterInformation = () => {
-    const dataHorario = ContactFooter.horario;
-    console.log(dataHorario)
 
     /* LLENAR INFORMACION DE MISION */
     /* REGION: rescatar value por su id */

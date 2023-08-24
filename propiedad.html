@@ -113,16 +113,16 @@
               <div class="setting-props-layout">
                 <ul class="nav nav-pills " id="pills-tab" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <!-- <button class="btn btn-light border-0 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <i class="bi bi-grid-fill"></i></button> -->
-                    <a class="btn btn-light border-0 active" href="propiedad.html" ><i class="bi bi-grid-fill"></i></a>
+                    <button class="btn btn-light border-0 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <i class="bi bi-grid-fill"></i></button>
+                    <!-- <a class="btn btn-light border-0 active" href="propiedad.html" ><i class="bi bi-grid-fill"></i></a> -->
                   </li>
                   <li class="nav-item" role="presentation">
-                    <!-- <button class="btn btn-light border-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> <i class="bi bi-list-ul"></i></button> -->
-                    <a class="btn btn-light border-0" href="propiedad_list.html" ><i class="bi bi-list-ul"></i></a>
+                    <button class="btn btn-light border-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> <i class="bi bi-list-ul"></i></button>
+                    <!-- <a class="btn btn-light border-0" href="propiedad_list.html" ><i class="bi bi-list-ul"></i></a> -->
                   </li>
                   <li class="nav-item" role="presentation">
-                    <!-- <button class="btn btn-light border-0" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" ><i class="bi bi-pin-map"></i></button> -->
-                    <a class="btn btn-light border-0" href="propiedad_map.html" ><i class="bi bi-pin-map"></i></a>
+                    <button class="btn btn-light border-0" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" ><i class="bi bi-pin-map"></i></button>
+                    <!-- <a class="btn btn-light border-0" href="propiedad_map.html" ><i class="bi bi-pin-map"></i></a> -->
                   </li>
                 </ul>
                 <!-- <div
@@ -154,7 +154,7 @@
               <div class="setting-props-layout__filter">
                 <div class="mx-2">
                   <p class="text-nowrap mt-2 w-100" id="total-prop">
-                    <span>Propiedades encontradas</span>
+                    <span>Buscando Propiedades...</span>
                   </p>
                 </div>
                 <div class="d-flex align-items-center">
@@ -173,7 +173,7 @@
                   </p>
                   <select id="FilterLimit" class="form-select border my-3">
                     <option value="3">3</option>
-                    <option value="6" selected>6</option>
+                    <option value="6">6</option>
                     <option value="9">9</option>
                   </select>
                 </div>
@@ -181,16 +181,18 @@
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">        
                     <div class="row" id="container-propiedad" style="justify-content: center;">
-                      <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border" role="status" style="margin: 10px 0;"><span class="visually-hidden">Loading...</span></div>
                     </div>
-                    
                   </div>
-                <!-- <div class="tab-pane fade " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="row" id="container-propiedad-list">                                
+                <div class="tab-pane fade " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row" id="container-propiedad-list" style="justify-content: center;">    
+                      <div class="spinner-border" role="status" style="margin: 10px 0;"><span class="visually-hidden">Loading...</span></div>                           
                     </div>            
-                </div> -->
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                  <div id="map"></div> 
+                </div>
+                <div class="tab-pane fade initialMap active" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                  <div id="div-map-section">
+                    <div id="map"></div> 
+                  </div>
                 </div>
                 
               </div>
@@ -198,33 +200,6 @@
               <div id="pagination-col">
               </div>  
 
-             <!--  <div class="container d-flex justify-content-center w-100">
-                <nav aria-label="..." class="d-flex justify-content-center">
-                  <ul class="pagination">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1">
-                        <i class="bi bi-arrow-left"></i>
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active">
-                      <a class="page-link" href="#"
-                        >2 <span class="sr-only">(current)</span></a
-                      >
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">
-                        <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div> -->
             </div>
 
             <div class="col-lg-3 advanced-search2">
@@ -235,7 +210,7 @@
                 <div class="row g-2 w-100">
                   <div class="form-group p-1">
                       <select class="form-control" id="operationType">
-                        <option value="" selected>Tipo de Operación</option>
+                        <option value="" selected>Tipo de operación</option>
                         <option value="venta" >Venta</option>
                         <option value="arriendo" >Arriendo</option>
                         <option value="arriendo_temporal" >Arriendo Temporal</option>
@@ -244,19 +219,9 @@
 
                   <div class="form-group p-1">
                     <select class="form-control" id="typeOfProperty">
-                      <option value="" selected>Tipo de Inmueble</option>
+                      <option value="" selected>Tipo de propiedad</option>
                       <option value="departamento">Departamento</option>
                       <option value="casa">Casa</option>
-                      <option value="parcela">Parcela</option>
-                      <option value="bodega">Bodega</option>
-                      <option value="terreno">Terreno</option>
-                      <option value="estacionamiento">Estacionamiento</option>
-                      <option value="industrial">Industrial</option>
-                      <option value="agricola">Agricola</option>
-                      <option value="local">Local Comercial</option>
-                      <option value="oficina">Oficina</option>
-                      <option value="sitio">Sitio</option>
-                      <option value="Terreno En Construccion">Terreno En Construccion</option>
                     </select>
                   </div>
 
@@ -314,7 +279,7 @@
                         type="radio"
                         name="inlineRadioOptions"
                         id="inlineRadio1"
-                        value="option1"
+                        value="UF"
                       />
                       <label class="form-check-label" for="inlineRadio1"
                         >UF</label
@@ -327,7 +292,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
-                          value="option2"
+                          value="CLP"
                         />
                         <label class="form-check-label" for="inlineRadio2"
                           >CLP</label
@@ -508,24 +473,19 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/viewProperties.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="/js/index.js"></script>
-    <script type="module" src="/js/mapProp.js"></script>
+    <script src="js/tabs.js"></script>
 
 
-
-   <!--  <script type="module" src="js/utils/filterOnSubmit.js"></script>
-    <script type="module" src="js/utils/filterOnSubmitIndex.js"></script> -->
-    <script type="module" src="js/utils/getSelects.js"></script>
-    <!-- <script type="module" src="js/Data/ContactInfo.js"></script> -->
-    <script type="module" src="js/utils/pagination.js"></script>
+    <script type="module" src="/js/pages/index.js"></script>
     <script type="module" src="js/utils/filterOnSearch.js"></script>
+    <script type="module" src="js/utils/getSelects.js"></script>
+    <script type="module" src="/js/utils/limitProp.js"></script>
+
+    
+
     <script type="module" src="js/Data/Footer.js"></script>
-    <!-- <script type="module" src="/js/utils/getInputsApi.js"></script>
-    <script type="module" src="/js/utils/getValuesOfInputs.js"></script>
-    <script type="module" src="/js/utils/setValuesOfInputs.js"></script> -->
   
   </body>
 </html>
