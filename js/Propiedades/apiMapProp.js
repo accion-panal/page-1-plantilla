@@ -65,10 +65,10 @@ export default async function apiCallMap() {
 
                 // create the popup
                 const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-                <span>${data.title}</span>
+                <span>${data?.title || "No cuenta con titulo"}</span>
                 <br>
                 <br>
-                <a href="/detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" name="VerDetalle"  class="more d-flex align-items-center float-start">
+                <a href="/detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" name="VerDetalle"  class="more d-flex align-items-center float-start" target="_blank">
                 <span class="label" >Ver Detalle</span>
                 <span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
                 </a>`)
