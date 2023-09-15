@@ -5,6 +5,11 @@ export default async function apiCallMapDetail(id, realtorId, statusId, companyI
 
 let {data} = await getPropertiesForId(id, realtorId, statusId, companyId);
 
+let divMapContainer = document.getElementById('map');
+if(data.LngLat == null){
+    divMapContainer.innerHTML = `No registra ubicación exacta`;
+    return;
+}
 
 const LngLat = data.LngLat.replace("{", "")
 		.replace("}", "")
