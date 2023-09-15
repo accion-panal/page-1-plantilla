@@ -16,7 +16,9 @@ let defaultLimit = limitDataApi.limit;
 function changeUrlImage(data) {
   return data.map(item => {
     // Reemplazar "\\" por "//" en la propiedad "image"
-    item.image = item.image.replace(/\\/g, "//");
+    if(item.image){
+      item.image = item.image.replace(/\\/g, "//");
+    }
     return item;
   });
 }
@@ -54,6 +56,18 @@ function ObjToStr(query) {
 
 function resetNumberPage() {
   return 1;
+}
+
+function validateImage(image){
+  if(image){
+    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg')){
+      return `<img src=${image} alt="Image" class="img-fluid">`;
+    }
+    return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`;
+  }
+  else{
+    return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`;
+  }
 }
 
 
@@ -196,7 +210,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
         <div class="property-item rounded overflow-hidden">
           <div class="position-relative overflow-hidden" style="height:200px">
             <a href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank">
-                    ${data.image.endsWith('.jpg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: data.image.endsWith('.png') ? `<img src=${data.image} alt="Image" class="img-fluid">` : data.image.endsWith('.jpeg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`}
+              ${validateImage(data.image)}
             </a>
             <div
               class="bg-dark rounded text-white position-absolute end-0 top-0 m-4 py-1 px-3"
@@ -208,8 +222,10 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
             <div class="p-4 pb-0 card-props">
               <a
                 class="d-block h6 mb-2 text-uppercase text-center textLimitClass"
-                href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank">
-                ${data.title}</a>
+                href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}"
+                target="_blank">
+                ${data.title}
+              </a>
               <span>Cod: ${data.id}</span>
   
               <p class="text-center">
@@ -248,7 +264,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
         <div class="property-item rounded overflow-hidden flex-row align-items-center">
           <div class="position-relative overflow-hidden"  style="max-width: 50%;>
             <a href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank">
-            ${data.image.endsWith('.jpg') ? `<img src=${data.image} alt="Image" class="img-fluid ">`: data.image.endsWith('.png') ? `<img src=${data.image} alt="Image" class="img-fluid ">` : data.image.endsWith('.jpeg') ? `<img src=${data.image} alt="Image" class="img-fluid">`: `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="" class="img-fluid">`}
+              ${validateImage(data.image)}
             </a>
             <div class="bg-dark rounded text-white position-absolute end-0 top-0 m-4 py-1 px-3">
               ${data.operation}
@@ -256,7 +272,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
           </div>
           <div class="item-info w-75">
             <div class="p-4 pb-0 card-props">
-              <a class="d-block h6 mb-2 text-uppercase text-center" href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank">${data?.title || "No cuenta con titulo"}</a>
+              <a class="d-block h6 mb-2 text-uppercase text-center" href="detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank">${data.title}</a>
               <p class="text-center">
                 <i class="bi bi-pin-map"></i> ${data.address != undefined && data.address != "" && data.address != null ? data.address: "No registra dirección"}, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune: "No registra comuna"} , ${data.city != undefined && data.city != "" && data.city != null ? data.city: "No registra ciudad"}, Chile
               </p>
