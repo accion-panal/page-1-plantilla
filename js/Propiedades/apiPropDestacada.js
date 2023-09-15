@@ -29,7 +29,7 @@ export default async function apiDestCall() {
             <div class="col-sm-4 property mb-3" style="width:390px;height:620px !important;margin: 0 1px 0 0">
               <div class="property-item rounded overflow-hidden">
                 <div class="position-relative overflow-hidden" style="height:285px">
-                  <a href="/detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}">
+                  <a href="/detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}" target="_blank">
                     <img
                       class="img-fluid"
                       src="${data.image != undefined && data.image != "" && data.image != null ? data.image : "assets/img/Sin.png"}"
@@ -45,8 +45,8 @@ export default async function apiDestCall() {
                   <div class="p-4 pb-0 card-props">
                     <a
                       class="d-block h6 mb-2 text-uppercase text-center"
-                      href="detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}"
-                      >${data.title}</a>
+                      href="detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${1}" target="_blank"
+                      >${data?.title || "No cuenta con titulo"}</a>
                     <span>Cod: ${data.id}</span>
         
                     <p class="text-center">
